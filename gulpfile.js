@@ -60,7 +60,7 @@ gulp.task('watch', function () {
 
 gulp.task('docs', ['server'], function () {
   gulp.src(__filename)
-    .pipe(open({uri: 'http://localhost:9001/docs/'}))
+    .pipe(open({uri: 'http://localhost:9001'}))
 })
 
 gulp.task('server', function () {

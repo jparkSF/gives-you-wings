@@ -5,8 +5,11 @@
   "description": "A bootstrap toolkit.",
   "main": "gulpfile.js",
   "author": "Colossal",
+  "dependencies": {
+    "http-server": "*"
+  },
   "scripts": {
-    "start": "./node_modules/.bin/gulp docs"
+    "start": "http-server ./docs -p ${PORT:=9001} -c-1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
