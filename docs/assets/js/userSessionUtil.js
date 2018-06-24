@@ -18,8 +18,9 @@ function onSignIn(googleUser){
 
 function onSignOut(){
   const auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function(){
-    alert("Signed Out");
+  auth2.disconnect().then(function(e){
+    console.log(e);
+    alert("Successfully signed out");
 
     $(".g-signin2").css("display", "block");
     $(".data").css("display", "none");
