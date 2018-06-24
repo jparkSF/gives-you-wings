@@ -59,3 +59,7 @@ th:last-child{
 .table .header{
   padding-right: 50px !important;
 }
+
+.vitamin-score-table-body > tr > th{
+  padding-right: 2.75rem !important;
+}
