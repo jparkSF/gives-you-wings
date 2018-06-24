@@ -6,7 +6,8 @@
   "main": "gulpfile.js",
   "author": "Colossal",
   "dependencies": {
-    "http-server": "*"
+    "http-server": "*",
+    "titleize": "^1.0.1"
   },
   "scripts": {
     "start": "http-server ./docs -p ${PORT:=9001} -c-1"
