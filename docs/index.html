@@ -8,11 +8,11 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <!-- below client_id for local development -->
-    <meta name="google-signin-client_id" content="374559906470-hsafh3ro5pom3qrs5ee407imaro1ac9s.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="374559906470-m5vcidqq2bd4ejolf0enj1d483rp50h4.apps.googleusercontent.com">
     <!-- below client_id for production  -->
     <!-- <meta name="google-signin-client_id" content="147730056377-p3cofnn7fv9eav00e0e3ssv1ba5c8rs3.apps.googleusercontent.com"> -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="assets/js/signin.js"></script>
+    <script src="assets/js/userSessionUtil.js"></script>
 
     <title>
       
@@ -45,18 +45,25 @@
       }
 
     </style>
+    <script>
+      function testSignIn(e){
+        console.log("below is the response")
+        console.log(e)
+      }
+    </script>
     
   </head>
 
 
 <body>
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <!-- <div class="g-signin2" data-onsuccess="testSignIn"></div> -->
   <div class="data">
     <p>Profile Details</p>
     <img id="pic" class="img-circle" witdth="100" height="100" />
     <p>Email Address</p>
     <p id="email" class="alert alert-danger" ></p>
-    <button onClick="signOut()" class="btn btn-danger">SignOut</button>
+    <button onClick="onSignOut()" class="btn btn-danger">SignOut</button>
   </div>
   
   <div class="container">
