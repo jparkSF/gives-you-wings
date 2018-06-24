@@ -43,19 +43,19 @@ table.list-group-header > tr{
   white-space: nowrap;
 }
 
-.flex-0{
-  flex:0;
+
+.table-header{
+  padding-right: 40px !important; 
 }
 
-.flex-1{
-  flex:1;
+.table{ 
+  white-space: nowrap;
 }
 
-.flex-chart > th{
-  padding:0;
-
+th:last-child{
+  padding-right: 75px !important;
 }
 
-.flex-chart > th > a {
-  border-radius: 0 !important;
+.table .header{
+  padding-right: 50px !important;
 }
