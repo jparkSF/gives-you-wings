@@ -1,0 +1,38 @@
+{
+  "id": "or_18Q3IaDAu10Yox5RqlL8JnnS",
+  "amount": 2172,
+  "status": "created",
+  "items": [
+    {
+      "type": "sku",
+      "amount": 1500,
+      "description": "2015 Limited Edition T-shirt",
+      "parent": "sku_D4XVa8450Ga6RP"
+    },
+    {
+      "type": "tax",
+      "amount": 112,
+      "description": "CA STATE TAX (P0000000)",
+      "parent": null
+    },
+    {
+      "type": "shipping",
+      "amount": 560,
+      "description": "USPS Priority Mail",
+      "parent": "ad989a994218446fbd48978a6ac905b0"
+    }
+  ],
+  "selected_shipping_method": "0083dfe889534b75bf8ca73aa703e938",
+  "shipping_methods": [
+    {
+      "id": "ad989a994218446fbd48978a6ac905b0",
+      "amount": 560,
+      "description": "USPS Priority Mail"
+    },
+    {
+      "id": "db18a419e6f14aba82aa41f2bb9ec08e",
+      "amount": 595,
+      "description": "USPS Parcel Select"
+    }
+  ]
+}
