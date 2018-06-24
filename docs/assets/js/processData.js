@@ -20,6 +20,26 @@ function processVitaminScore(data) {
     formatted_data.push(row.split(','))
   }) /* each column is separated by ','  */
 
-  console.log(formatted_data)
+  appendData(formatted_data)
+}
 
+function appendData(data){
+  console.log('inside')
+  for(let i = 1; i < data.length; i++){ 
+    
+    const type = data[i][0]
+    const customerCount = data[i][1]
+    const maxCount = data[i][2]
+    const efficiency = data[i][3]
+
+    $(".vitamin-score-table-body").append(
+    `
+      <tr>
+        <td>${type}</td>
+        <td>${customerCount}</td>
+        <td>${maxCount}</td>
+        <td>${efficiency}</td>
+      </tr>
+    `)
+  }
 }

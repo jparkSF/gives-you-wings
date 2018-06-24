@@ -134,28 +134,14 @@
                 </h6>
 
                 <table class="table list-group-header" data-sort="table">
-                  <thead>
+                  <tbody class="vitamin-score-table-body">
                     <tr>
                       <th class="col-md-4">Type</th>
                       <th>Customer Count</th>
                       <th>Max Count</th>
                       <th>Efficiency</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
 
-                      <td>N-acetyl cysteine</td>
-                      <td>4.0</td>
-                      <td>7.0</td>
-                      <td>57.14285714285714</td>
-                    </tr>
-                    <tr>
-                      <td>Retinol</td>
-                      <td>2.0</td>
-                      <td>3.0</td>
-                      <td>66.66666666666666</td>
-                    </tr>
                   </tbody>
                 </table>
 
@@ -263,7 +249,7 @@
 
 
 
-<!-- 
+            <!-- 
             <div class="list-group mb-3">
 
               <h6 class="list-group-header">
@@ -339,7 +325,7 @@
 
 
 
-          <!-- <div class="col-md-6 mb-5">
+            <!-- <div class="col-md-6 mb-5">
             <div class="list-group mb-3">
               <h6 class="list-group-header">
                 Most visited pages
@@ -398,9 +384,9 @@
             </div>
             <a href="#" class="btn btn-outline-primary px-3">View all pages</a>
           </div> -->
-        </div>
+          </div>
 
-        <!-- <div id="anchor-3" class="list-group mb-3">
+          <!-- <div id="anchor-3" class="list-group mb-3">
           <h6 class="list-group-header">
             Devices and resolutions
           </h6>
@@ -456,11 +442,11 @@
           </a>
 
         </div> -->
-        <!-- <a href="#" class="btn btn-outline-primary px-3">View all devices</a> -->
+          <!-- <a href="#" class="btn btn-outline-primary px-3">View all devices</a> -->
 
-        <hr id="anchor-2" class="mt-5">
+          <hr id="anchor-2" class="mt-5">
 
-        <!-- <div class="row text-center mt-5">
+          <!-- <div class="row text-center mt-5">
           <div class="col-md-4 mb-4 mb-md-3">
             <div class="w-3 mx-auto">
               <canvas class="ex-graph" width="200" height="200" data-chart="doughnut" data-dataset="[230, 130]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }"
@@ -491,11 +477,11 @@
         </div> -->
 
 
-        <!-- <div id="anchor-1" class="hr-divider mt-5 mb-3">
+          <!-- <div id="anchor-1" class="hr-divider mt-5 mb-3">
           <h3 class="hr-divider-content hr-divider-heading">Quick stats</h3>
         </div> -->
 
-        <!-- <div class="row statcards">
+          <!-- <div class="row statcards">
           <div class="col-md-6 col-xl-3 mb-3 mb-md-4 mb-xl-0">
             <div class="statcard statcard-success">
               <div class="p-3">
@@ -557,47 +543,47 @@
 
 
 
+        </div>
+
       </div>
 
-    </div>
 
+      <div id="docsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+          <div class="modal-content">
 
-    <div id="docsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Example modal</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>You're looking at an example modal in the dashboard theme.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Cool, got it!</button>
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Example modal</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>You're looking at an example modal in the dashboard theme.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cool, got it!</button>
+            </div>
           </div>
         </div>
       </div>
+
+
+
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/popper.min.js"></script>
+      <script src="assets/js/chart.js"></script>
+      <script src="assets/js/tablesorter.min.js"></script>
+      <script src="assets/js/toolkit.js"></script>
+      <script src="assets/js/application.js"></script>
+      <script src="assets/js/processData.js"></script>
+
+
+      <script>
+        // execute/clear BS loaders for docs
+        $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
+      </script>
     </div>
-
-
-
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/chart.js"></script>
-    <script src="assets/js/tablesorter.min.js"></script>
-    <script src="assets/js/toolkit.js"></script>
-    <script src="assets/js/application.js"></script>
-    <script src="assets/js/processData.js"></script>
-   
-
-    <script>
-      // execute/clear BS loaders for docs
-      $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
-    </script>
-  </div>
 </body>
 
 </html>
