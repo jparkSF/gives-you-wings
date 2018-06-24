@@ -1,0 +1,33 @@
+
+
+.g-signin2 {
+  margin-right: 30px;
+  float: right;
+}
+
+.data {
+  float: right;
+  display: none;
+}
+
+.data > * {
+  margin-right: 13px;
+  
+}
+
+#pic{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+#name{
+  font-size: 0.9em;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+
+.signout{
+  font-size: 0.7rem !important;
+  line-height: 1.5 !important;
+}

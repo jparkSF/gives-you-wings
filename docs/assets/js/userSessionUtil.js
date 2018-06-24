@@ -3,9 +3,11 @@ function onSignIn(googleUser){
 
   // console.log(profile)
   $(".g-signin2").css("display","none");
-  $(".data").css("display", "block");
+  $(".data").css("display", "flex");
   $("#pic").attr("src", profile.getImageUrl());
-  $("#email").text(`${profile.getEmail()}, ${profile.getName()}`);
+  $("#name").text(`${profile.getName()}`);
+  // $(".container").css("display", "block")
+
   console.log(`email: ${profile.getEmail()}`)
   console.log(`name: ${profile.getName()}`)
   console.log(`id: ${profile.getId()}`)
@@ -18,13 +20,14 @@ function onSignIn(googleUser){
 
 function onSignOut(){
   const auth2 = gapi.auth2.getAuthInstance();
-  auth2.disconnect().then(function(e){
-    console.log(e);
-    alert("Successfully signed out");
-
-    $(".g-signin2").css("display", "block");
-    $(".data").css("display", "none");
-
-  })
+  let response = confirm("Do you want to sign out?")
+  if (response){
+    auth2.disconnect().then(function (e) {
+      console.log(e);
+      $(".g-signin2").css("display", "block");
+      $(".data").css("display", "none");
+      // $(".container").css("display", "none")
+    })
+  }
 }
 
