@@ -31,3 +31,31 @@
   font-size: 0.7rem !important;
   line-height: 1.5 !important;
 }
+
+table.list-group-header > tr{
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-chart{
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+}
+
+.flex-0{
+  flex:0;
+}
+
+.flex-1{
+  flex:1;
+}
+
+.flex-chart > th{
+  padding:0;
+
+}
+
+.flex-chart > th > a {
+  border-radius: 0 !important;
+}
