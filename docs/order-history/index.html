@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,18 +8,21 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-    <title>
-      
-        Order history &middot; 
-      
-    </title>
+    <!-- Google OAuth -->
+    <!-- below client_id for local development -->
+    <meta name="google-signin-client_id" content="374559906470-m5vcidqq2bd4ejolf0enj1d483rp50h4.apps.googleusercontent.com">
+    <!-- below client_id for production  -->
+    <!-- <meta name="google-signin-client_id" content="147730056377-p3cofnn7fv9eav00e0e3ssv1ba5c8rs3.apps.googleusercontent.com"> -->
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="../assets/js/userSessionUtil.js"></script>
+
+    <title>Order history &middot;</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
-    
-      <link href="../assets/css/toolkit-inverse.css" rel="stylesheet">
-    
-    
+    <link href="../assets/css/toolkit-inverse.css" rel="stylesheet">
     <link href="../assets/css/application.css" rel="stylesheet">
+    <link href="../assets/css/nav.css" rel="stylesheet">
 
     <style>
       /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -37,6 +37,12 @@
 
 
 <body>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <div class="data">
+    <img id="pic" class="img-circle" />
+    <p id="name"></p>
+    <button onClick="onSignOut()" class="btn btn-danger signout">Sign Out</button>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-md-3 sidebar">
@@ -65,13 +71,6 @@
               <li class="nav-item">
                 <a class="nav-link active" href="../order-history/index.html">Order history</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link "href="../fluid/index.html">Fluid layout</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../icon-nav/index.html">Icon nav</a>
-              </li>
-
               <li class="nav-header">More</li>
               <li class="nav-item">
                 <a class="nav-link "href="../docs/index.html">
@@ -359,6 +358,7 @@
     <script src="../assets/js/tablesorter.min.js"></script>
     <script src="../assets/js/toolkit.js"></script>
     <script src="../assets/js/application.js"></script>
+    <script src="../assets/js/processData.js"></script>
     <script>
       // execute/clear BS loaders for docs
       $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
