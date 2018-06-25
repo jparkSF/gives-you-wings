@@ -11,9 +11,9 @@
 
   <!-- Google OAuth -->
   <!-- below client_id for local development -->
-  <meta name="google-signin-client_id" content="374559906470-m5vcidqq2bd4ejolf0enj1d483rp50h4.apps.googleusercontent.com">
+  <!-- <meta name="google-signin-client_id" content="374559906470-m5vcidqq2bd4ejolf0enj1d483rp50h4.apps.googleusercontent.com"> -->
   <!-- below client_id for production  -->
-  <!-- <meta name="google-signin-client_id" content="147730056377-p3cofnn7fv9eav00e0e3ssv1ba5c8rs3.apps.googleusercontent.com"> -->
+  <meta name="google-signin-client_id" content="147730056377-p3cofnn7fv9eav00e0e3ssv1ba5c8rs3.apps.googleusercontent.com">
 
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="../assets/js/userSessionUtil.js"></script>
@@ -168,7 +168,7 @@
           
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Cool, got it!</button>
+          <button type="button" class="btn btn-primary" onClick="handleDismiss()" data-dismiss="modal">Cool, got it!</button>
         </div>
       </div>
     </div>

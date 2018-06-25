@@ -66,3 +66,7 @@ function handleClick(orderNumber){
     `
   )
 }
+
+function handleDismiss(){
+  $(".modal-body").empty()
+}
