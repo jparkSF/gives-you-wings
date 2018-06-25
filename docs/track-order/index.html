@@ -18,7 +18,7 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="../assets/js/userSessionUtil.js"></script>
 
-  <title>Order history &middot;</title>
+  <title>Track Order &middot;</title>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
   <link href="../assets/css/toolkit-inverse.css" rel="stylesheet">
@@ -73,7 +73,10 @@
                 <a class="nav-link " href="../index.html">Overview</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="../order-history/index.html">Order history</a>
+                <a class="nav-link" href="../order-history/index.html">Order history</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="../track-order/index.html">Track order</a>
               </li>
               <li class="nav-header">More</li>
               <li class="nav-item">
@@ -103,7 +106,7 @@
         <div class="dashhead">
           <div class="dashhead-titles">
             <h6 class="dashhead-subtitle">Dashboards</h6>
-            <h2 class="dashhead-title">Order history</h2>
+            <h2 class="dashhead-title">Track your order</h2>
           </div>
 
           <div class="btn-toolbar dashhead-toolbar">
@@ -140,10 +143,11 @@
                 <th>
                   <input type="checkbox" class="select-all" id="selectAll">
                 </th>
-                <th>Order</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Total</th>
+                <th>Order #</th>
+                <th>Tracking Number</th>
+                <th>Carrier</th>
+                <th>Status</th>
+                <th>ETA</th>
               </tr>
             </tbody>
           </table>
@@ -181,7 +185,7 @@
   <script src="../assets/js/tablesorter.min.js"></script>
   <script src="../assets/js/toolkit.js"></script>
   <script src="../assets/js/application.js"></script>
-  <script src="../assets/js/orderInformation.js"></script>
+  <script src="../assets/js/trackOrder.js"></script>
 
   <script>
     // execute/clear BS loaders for docs
