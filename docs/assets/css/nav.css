@@ -53,7 +53,7 @@ table.list-group-header > tr{
 }
 
 th:last-child{
-  padding-right: 75px !important;
+  /* padding-right: 75px !important; */
 }
 
 .table .header{
