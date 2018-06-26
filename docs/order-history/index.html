@@ -1,195 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="author" content="">
+    <!-- Google OAuth -->
+    <!-- below client_id for local development -->
+    <meta name="google-signin-client_id" content="374559906470-m5vcidqq2bd4ejolf0enj1d483rp50h4.apps.googleusercontent.com">
+    <!-- below client_id for production  -->
+    <!-- <meta name="google-signin-client_id" content="147730056377-p3cofnn7fv9eav00e0e3ssv1ba5c8rs3.apps.googleusercontent.com"> -->
 
-  <!-- Google OAuth -->
-  <!-- below client_id for local development -->
-  <meta name="google-signin-client_id" content="374559906470-m5vcidqq2bd4ejolf0enj1d483rp50h4.apps.googleusercontent.com">
-  <!-- below client_id for production  -->
-  <!-- <meta name="google-signin-client_id" content="147730056377-p3cofnn7fv9eav00e0e3ssv1ba5c8rs3.apps.googleusercontent.com"> -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="../assets/js/userSessionUtil.js"></script>
 
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="../assets/js/userSessionUtil.js"></script>
+    <title>Order history &middot;</title>
 
-  <title>Order history &middot;</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+    <link href="../assets/css/toolkit-inverse.css" rel="stylesheet">
+    <link href="../assets/css/application.css" rel="stylesheet">
+    <link href="../assets/css/nav.css" rel="stylesheet">
+    <link href="../assets/css/custom.css" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
-  <link href="../assets/css/toolkit-inverse.css" rel="stylesheet">
-  <link href="../assets/css/application.css" rel="stylesheet">
-  <link href="../assets/css/nav.css" rel="stylesheet">
-  <link href="../assets/css/custom.css" rel="stylesheet">
+    <style>
+      /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+      /* this chunk of css is not part of the toolkit :) */
+      body {
+        width: 1px;
+        min-width: 100%;
+        *width: 100%;
+      }
+    </style>
+  </head>
 
-  <style>
-    /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+  <body>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="data">
+      <img id="pic" class="img-circle" />
+      <p id="name"></p>
+      <button onClick="onSignOut()" class="btn btn-danger signout">Sign Out</button>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 sidebar">
+          <nav class="sidebar-nav">
+            <div class="sidebar-header">
+              <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse" data-target="#nav-toggleable-md">
+                <span class="sr-only">Toggle nav</span>
+              </button>
+              <a class="sidebar-brand img-responsive" href="../index.html">
+                <span class="icon icon-leaf sidebar-brand-icon"></span>
+              </a>
+            </div>
 
-    /* this chunk of css is not part of the toolkit :) */
+            <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
+              <form class="sidebar-form">
+                <input class="form-control" type="text" placeholder="Search...">
+                <button type="submit" class="btn-link">
+                  <span class="icon icon-magnifying-glass"></span>
+                </button>
+              </form>
+              <ul class="nav nav-pills nav-stacked flex-column">
+                <li class="nav-header">Dashboards</li>
+                <li class="nav-item">
+                  <a class="nav-link " href="../index.html">Overview</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="../order-history/index.html">Order history</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../track-order/index.html">Track order</a>
+                </li>
+              </ul>
+              <hr class="visible-xs mt-3">
+            </div>
+          </nav>
+        </div>
+        <div class="col-md-9 content">
+          <div class="dashhead">
+            <div class="dashhead-titles">
+              <h6 class="dashhead-subtitle">Dashboards</h6>
+              <h2 class="dashhead-title">Order history</h2>
+            </div>
 
-    body {
-      width: 1px;
-      min-width: 100%;
-      *width: 100%;
-    }
-  </style>
-</head>
-
-
-<body>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
-  <div class="data">
-    <img id="pic" class="img-circle" />
-    <p id="name"></p>
-    <button onClick="onSignOut()" class="btn btn-danger signout">Sign Out</button>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 sidebar">
-        <nav class="sidebar-nav">
-          <div class="sidebar-header">
-            <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse" data-target="#nav-toggleable-md">
-              <span class="sr-only">Toggle nav</span>
-            </button>
-            <a class="sidebar-brand img-responsive" href="../index.html">
-              <span class="icon icon-leaf sidebar-brand-icon"></span>
-            </a>
+            <div class="btn-toolbar dashhead-toolbar">
+              <div class="btn-toolbar-item input-with-icon">
+                <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+                <span class="icon icon-calendar"></span>
+              </div>
+            </div>
           </div>
 
-          <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
-            <form class="sidebar-form">
-              <input class="form-control" type="text" placeholder="Search...">
-              <button type="submit" class="btn-link">
+          <div class="flextable table-actions">
+            <div class="flextable-item flextable-primary">
+              <div class="btn-toolbar-item input-with-icon">
+                <input type="text" class="form-control input-block" placeholder="Search orders">
                 <span class="icon icon-magnifying-glass"></span>
-              </button>
-            </form>
-            <ul class="nav nav-pills nav-stacked flex-column">
-              <li class="nav-header">Dashboards</li>
-              <li class="nav-item">
-                <a class="nav-link " href="../index.html">Overview</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="../order-history/index.html">Order history</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../track-order/index.html">Track order</a>
-              </li>
-              <li class="nav-header">More</li>
-              <li class="nav-item">
-                <a class="nav-link " href="../docs/index.html">
-                  Toolkit docs
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="http://getbootstrap.com" target="blank">
-                  Bootstrap docs
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../index-light/index.html">Light UI</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#docsModal" data-toggle="modal">
-                  Example modal
-                </a>
-              </li>
-            </ul>
-            <hr class="visible-xs mt-3">
-          </div>
-        </nav>
-      </div>
-      <div class="col-md-9 content">
-        <div class="dashhead">
-          <div class="dashhead-titles">
-            <h6 class="dashhead-subtitle">Dashboards</h6>
-            <h2 class="dashhead-title">Order history</h2>
-          </div>
-
-          <div class="btn-toolbar dashhead-toolbar">
-            <div class="btn-toolbar-item input-with-icon">
-              <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
-              <span class="icon icon-calendar"></span>
+              </div>
+            </div>
+            <div class="flextable-item">
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary">
+                  <span class="icon icon-pencil"></span>
+                </button>
+                <button type="button" class="btn btn-outline-primary">
+                  <span class="icon icon-erase"></span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="flextable table-actions">
-          <div class="flextable-item flextable-primary">
-            <div class="btn-toolbar-item input-with-icon">
-              <input type="text" class="form-control input-block" placeholder="Search orders">
-              <span class="icon icon-magnifying-glass"></span>
-            </div>
+          <div class="table-responsive">
+            <table class="table" data-sort="table">
+              <tbody class="order-information-table-body">
+                <tr>
+                  <th>
+                    <input type="checkbox" class="select-all" id="selectAll">
+                  </th>
+                  <th>Order</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="flextable-item">
-            <div class="btn-group">
-              <button type="button" class="btn btn-outline-primary">
-                <span class="icon icon-pencil"></span>
-              </button>
-              <button type="button" class="btn btn-outline-primary">
-                <span class="icon icon-erase"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="table-responsive">
-          <table class="table" data-sort="table">
-            <tbody class="order-information-table-body">
-              <tr>
-                <th>
-                  <input type="checkbox" class="select-all" id="selectAll">
-                </th>
-                <th>Order</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Total</th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-
-  <div id="docsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Order Detail</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onClick="handleDismiss()" data-dismiss="modal">Cool, got it!</button>
         </div>
       </div>
     </div>
-  </div>
 
+    <div id="docsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
 
-  <script src="../assets/js/jquery.min.js"></script>
-  <script src="../assets/js/popper.min.js"></script>
-  <script src="../assets/js/chart.js"></script>
-  <script src="../assets/js/tablesorter.min.js"></script>
-  <script src="../assets/js/toolkit.js"></script>
-  <script src="../assets/js/application.js"></script>
-  <script src="../assets/js/orderInformation.js"></script>
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Order Detail</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-  <script>
-    // execute/clear BS loaders for docs
-    $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
-  </script>
-</body>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onClick="handleDismiss()" data-dismiss="modal">Cool, got it!</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/chart.js"></script>
+    <script src="../assets/js/tablesorter.min.js"></script>
+    <script src="../assets/js/toolkit.js"></script>
+    <script src="../assets/js/application.js"></script>
+    <script src="../assets/js/orderInformation.js"></script>
+
+    <script>
+      // execute/clear BS loaders for docs
+      $(function () { while (window.BS && window.BS.loader && window.BS.loader.length) { (window.BS.loader.pop())() } })
+    </script>
+  </body>
 </html>

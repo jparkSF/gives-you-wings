@@ -11,16 +11,14 @@ $(document).ready(function () {
   }).then(data => onSuccess(data))
 })
 
-function onSuccess(data){
-  console.log(data)
+function onSuccess(data) {
   const orderNumbers = Object.keys(data)
 
   for (let i = 0; i < orderNumbers.length; i++) {
-    
     const orderNumber = orderNumbers[i]
     const itemDescription = data[orderNumber].items[0].description
-    const totalPrice = ((data[orderNumber].amount)/100).toFixed(2)
-    
+    const totalPrice = ((data[orderNumber].amount) / 100).toFixed(2)
+
     $(".order-information-table-body").append(
       `
       <tr>
@@ -39,15 +37,15 @@ function onSuccess(data){
   }
 }
 
-function handleClick(orderNumber){
+function handleClick(orderNumber) {
   const order = dataSet[orderNumber]
-  const orderPrice = (order.amount/100).toFixed(2)
+  const orderPrice = (order.amount / 100).toFixed(2)
   $(".modal-body").append(
     `
     <div class="order-detail-wrap"> 
       <div class="order-items">
         <p>${order.items[0].description}</p>
-        <p>${((order.items[0].amount)/100).toFixed(2)} </p>
+        <p>${((order.items[0].amount) / 100).toFixed(2)} </p>
       </div>
       <div class="order-items">
         <p>CA State Tax</p>
@@ -67,6 +65,6 @@ function handleClick(orderNumber){
   )
 }
 
-function handleDismiss(){
+function handleDismiss() {
   $(".modal-body").empty()
 }

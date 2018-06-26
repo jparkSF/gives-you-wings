@@ -2,3 +2,15 @@
   display: flex;
   justify-content: space-between;
 }
+
+.modal-dialog{
+  max-width: 1000px !important;
+  width: 900px;
+}
+.header{
+  font-weight: bold;
+}
+
+.tracking-detail-table{
+  width: 100%;
+}
